@@ -31,7 +31,7 @@ const InnerCourseRequestPage = ({ userPosition, userId }) => {
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const res = await axios.get(`http://localhost:8082/api/courses/status/${userId}`);
+        const res = await axios.get(`/api/courses/status/${userId}`);
         if (res.data && res.data.status) {
           setCourseData(prev =>
             !prev || prev.id !== res.data.id || prev.status !== res.data.status
@@ -58,7 +58,7 @@ const InnerCourseRequestPage = ({ userPosition, userId }) => {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
 
-      const res = await axios.post('http://localhost:8082/api/courses/request', {
+      const res = await axios.post('/api/courses/request', {
         userId,
         depart: {
           latitude: userPosition.lat,

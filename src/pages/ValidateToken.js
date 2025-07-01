@@ -13,7 +13,7 @@ function ValidateToken() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8082/api/auth/validate-token', { token }, {
+      const response = await axios.post('/api/auth/validate-token', { token }, {
         headers: { 'Content-Type': 'application/json' },
       });
 

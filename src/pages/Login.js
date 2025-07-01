@@ -27,8 +27,8 @@ function Login() {
 
     const endpoint =
       selectedRole === "driver"
-        ? "http://localhost:8082/api/drivers/login"
-        : "http://localhost:8082/api/auth/login";
+        ? "/api/drivers/login"
+        : "/api/auth/login";
 
     try {
       const res = await axios.post(endpoint, formData);

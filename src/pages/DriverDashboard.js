@@ -22,7 +22,7 @@ const DriverDashboard = () => {
         longitude: coords?.lng || null
       };
 
-      await axios.put(`http://localhost:8082/api/drivers/en-ligne/${id}`, body);
+      await axios.put(`/api/drivers/en-ligne/${id}`, body);
     } catch (err) {
       console.error("Erreur backend :", err);
       alert("Erreur de mise à jour du statut en ligne.");

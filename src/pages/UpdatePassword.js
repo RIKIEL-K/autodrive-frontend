@@ -32,7 +32,7 @@ function UpdatePassword() {
     }
 
     try {
-      const response = await axios.post('http://localhost:8082/api/auth/update-password', {
+      const response = await axios.post('/api/auth/update-password', {
         token,
         newPassword
       }, {

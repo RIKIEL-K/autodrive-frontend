@@ -53,8 +53,8 @@ const Register = () => {
 
     const endpoint =
       selectedRole === "driver"
-        ? "http://localhost:8082/api/drivers/register"
-        : "http://localhost:8082/api/auth/register";
+        ? "/api/drivers/register"
+        : "/api/auth/register";
 
     try {
       await axios.post(endpoint, user);

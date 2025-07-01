@@ -21,7 +21,7 @@ function AccountSettings() {
   const [useDefaultAddress, setUseDefaultAddress] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:8082/api/users/profile/${id}`)
+    axios.get(`/api/users/profile/${id}`)
       .then(res => {
         setUser(res.data);
       })
@@ -33,7 +33,7 @@ function AccountSettings() {
   };
 
   const toggleVisibility = () => {
-    axios.put(`http://localhost:8082/api/users/toggle-visibility/${id}`)
+    axios.put(`/api/users/toggle-visibility/${id}`)
       .then(res => {
         alert(res.data);
         setUser(prev => ({ ...prev, visible: !prev.visible }));
@@ -42,12 +42,12 @@ function AccountSettings() {
   };
 
   const handleSave = () => {
-    axios.put(`http://localhost:8082/api/users/update/${id}`, user)
+    axios.put(`/api/users/update/${id}`, user)
       .then(res => alert(res.data))
       .catch(err => alert("Erreur de sauvegarde : " + err.message));
 
     if (useDefaultAddress) {
-      axios.put(`http://localhost:8082/api/users/set-default-address/${id}`, {
+      axios.put(`/api/users/set-default-address/${id}`, {
         address: user.address
       }).then(res => console.log("Adresse par défaut mise à jour"))
         .catch(err => console.error(err));
@@ -56,7 +56,7 @@ function AccountSettings() {
 
   const handleDelete = () => {
     if (window.confirm("Êtes-vous sûr de vouloir supprimer ce compte ?")) {
-      axios.delete(`http://localhost:8082/api/users/delete/${id}`)
+      axios.delete(`/api/users/delete/${id}`)
         .then(res => {
           alert(res.data);
           navigate("/");
@@ -66,7 +66,7 @@ function AccountSettings() {
   };
 
   const handleReset = () => {
-    axios.get(`http://localhost:8082/api/users/reset-form/${id}`)
+    axios.get(`/api/users/reset-form/${id}`)
       .then(res => setUser(res.data))
       .catch(err => alert("Erreur de réinitialisation : " + err.message));
   };
@@ -83,7 +83,7 @@ function AccountSettings() {
     const formData = new FormData();
     formData.append("photo", selectedPhoto);
 
-    axios.put(`http://localhost:8082/api/users/update-photo/${id}`, formData, {
+    axios.put(`/api/users/update-photo/${id}`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
     })
       .then(res => {
