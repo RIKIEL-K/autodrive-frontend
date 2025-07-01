@@ -51,7 +51,7 @@ const TaxiDashboard = () => {
 
     const fetchCourses = async () => {
       try {
-        const res = await axios.get(`http://localhost:8082/api/courses/for-driver/${id}`, {
+        const res = await axios.get(`/api/courses/for-driver/${id}`, {
           params: {
             latitude: position.lat,
             longitude: position.lng,
@@ -87,7 +87,7 @@ const TaxiDashboard = () => {
 
   const confirmAccept = async () => {
     try {
-      await axios.put(`http://localhost:8082/api/courses/accept/${acceptOrder.id}`, null, {
+      await axios.put(`/api/courses/accept/${acceptOrder.id}`, null, {
         params: { driverId: id }
       });
 

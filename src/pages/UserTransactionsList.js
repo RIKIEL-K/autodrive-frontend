@@ -7,7 +7,7 @@ const UserTransactionsList = ({ userId }) => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8082/api/transactions/user/${userId}`)
+    axios.get(`/api/transactions/user/${userId}`)
       .then(res => setTransactions(res.data))
       .catch(err => console.error("Erreur : ", err));
   }, [userId]);
